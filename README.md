@@ -8,21 +8,26 @@ Reusable views for working with icons.
 
 ### Presets
 Teaser presets - for using in empty/error views.
-![Preset teaser](Resources/preset_teaser.png)
+
+<img src="Resources/preset_teaser.png" width=600>
 
 List presets - for use in lists (for ex. UITableView)
-![Preset list](Resources/preset_list.png)
+
+<img src="Resources/preset_list.png" width=600>
 
 ### Customization
 
 Background
-![Background](Resources/background.png)
+
+<img src="Resources/background.png" width=600>
 
 Foreground
-![Foreground](Resources/foreground.png)
+
+<img src="Resources/foreground.png" width=600>
 
 Shape
-![Shape](Resources/shape.png)
+
+<img src="Resources/shape.png" width=600>
 
 ## Installation
 
