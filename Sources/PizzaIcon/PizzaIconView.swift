@@ -220,16 +220,44 @@ public class PizzaIconView: UIView {
         if #available(iOS 17.0, *) {
             if shouldBounce {
                 imageView.addSymbolEffect(.bounce.up.byLayer)
-                //                onTap(completion: { [weak self] in
-                //                    self?.imageView.addSymbolEffect(.bounce.up.byLayer)
-                //                })
+                onTap(completion: { [weak self] in
+                    self?.imageView.addSymbolEffect(.bounce.up.byLayer)
+                })
             } else {
                 imageView.removeAllSymbolEffects()
-                //                onTap(completion: nil)
+                onTap(completion: nil)
             }
         } else {
-            //            onTap(completion: nil)
+            onTap(completion: nil)
         }
     }
 
+}
+
+extension UIView {
+
+    func onTap(completion: (() -> Void)?) {
+        let tapRecogniser = ClickListener(
+            target: self,
+            action: #selector(onViewClicked(sender:))
+        )
+        tapRecogniser.onClick = completion
+        isUserInteractionEnabled = completion != nil
+        if let old = gestureRecognizers?.first(where: { $0 is ClickListener }) {
+            self.removeGestureRecognizer(old)
+        }
+        self.addGestureRecognizer(tapRecogniser)
+    }
+
+    @objc
+    private func onViewClicked(sender: ClickListener) {
+        if let onClick = sender.onClick {
+            onClick()
+        }
+    }
+
+}
+
+fileprivate class ClickListener: UITapGestureRecognizer {
+    var onClick : (() -> Void)? = nil
 }
