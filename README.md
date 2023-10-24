@@ -13,21 +13,21 @@ Teaser presets - for using in empty/error views.
 
 List presets - for use in lists (for ex. UITableView)
 
-<img src="Resources/preset_list.png" width=600>
+<img src="Resources/preset_list.png" width=400>
 
 ### Customization
 
 Background
 
-<img src="Resources/background.png" width=600>
+<img src="Resources/background.png" width=400>
 
 Foreground
 
-<img src="Resources/foreground.png" width=600>
+<img src="Resources/foreground.png" width=300>
 
 Shape
 
-<img src="Resources/shape.png" width=600>
+<img src="Resources/shape.png" width=500>
 
 ## Installation
 
