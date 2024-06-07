@@ -128,6 +128,7 @@ public class PizzaIconView: UIView {
 
     private let imageView = UIImageView()
     private let backgroundView = PizzaIconBackgroundView()
+    private var imageViewConstraint: Constraint?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -149,19 +150,26 @@ public class PizzaIconView: UIView {
 
         backgroundView.snp.makeConstraints { make in
             make.width.equalTo(backgroundView.snp.height)
-            make.width.equalTo(10)
         }
 
         addSubview(imageView)
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFit
         imageView.snp.makeConstraints { make in
             make.trailing.bottom.lessThanOrEqualToSuperview()
                 .priority(.high)
             make.center.equalToSuperview()
+            make.width.equalTo(imageView.snp.height)
+            imageViewConstraint = make.width.equalTo(10).constraint
+        }
+
+        self.snp.makeConstraints { make in
+            make.width.equalTo(10)
         }
     }
 
     public func configure(icon: PizzaIcon, shouldBounce: Bool) {
+        imageViewConstraint?.update(offset: icon.size.iconPointSize)
+        
         switch icon.representation {
         case .image(let image):
             imageView.image = image
@@ -213,7 +221,7 @@ public class PizzaIconView: UIView {
         backgroundView.shape = icon.shape
         backgroundView.background = icon.background
         backgroundView.foregroundColor = icon.foreground.color
-        backgroundView.snp.updateConstraints { make in
+        self.snp.updateConstraints { make in
             make.width.equalTo(icon.size.pointSize)
         }
 

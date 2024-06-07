@@ -74,6 +74,10 @@ public struct PizzaIcon {
         self.representation = .sfSymbol(sfSymbol)
     }
 
+    public init(representation: Representation?) {
+        self.representation = representation
+    }
+
     public init?(sfSymbolRaw: String) {
         guard UIImage(systemName: sfSymbolRaw) != nil else {
             return nil
