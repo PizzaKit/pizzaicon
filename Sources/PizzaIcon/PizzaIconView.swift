@@ -153,7 +153,6 @@ public class PizzaIconView: UIView {
         }
 
         addSubview(imageView)
-        imageView.contentMode = .scaleAspectFit
         imageView.snp.makeConstraints { make in
             make.trailing.bottom.lessThanOrEqualToSuperview()
                 .priority(.high)
@@ -175,7 +174,11 @@ public class PizzaIconView: UIView {
             imageView.image = image
             imageView.tintColor = icon.foreground.color
             imageView.isHidden = false
+            imageView.layer.minificationFilter = .trilinear
+            imageView.contentMode = .scaleAspectFit
         case .sfSymbol(let symbol):
+            imageView.contentMode = .center
+            imageView.layer.minificationFilter = .linear
             imageView.image = UIImage(
                 systemSymbol: symbol,
                 withConfiguration: {
