@@ -18,11 +18,11 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/SnapKit/SnapKit",
-            from: "5.6.0"
+            from: "5.7.1"
         ),
         .package(
             url: "https://github.com/SFSafeSymbols/SFSafeSymbols",
-            from: "4.1.1"
+            from: "6.2.0"
         )
     ],
     targets: [
